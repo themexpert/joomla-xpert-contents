@@ -144,99 +144,102 @@ $i = 0;
         </div>
         <!-- Primary Content End -->
 
-        <?php if($sec_items != 0):?>
-        <!-- Secondary Content Start -->
-        <div class="xc-sec <?php echo ((int)$params->get('sec_item_flow') == 1)? 'xc-cols' : 'xc-rows' ?> <?php echo $params->get('sec_col_position')?>" style="width:<?php echo $sec_width; ?>px;">
-            <?php /*Scroller*/ if($params->get('sec_scrollable') AND $params->get('sec_navigation_position') == 'top'):?>
-                <!--Navigation Button Start-->
-                <div class="xc-navigator <?php echo $params->get('sec_navigation_type'); ?>">
-                    <div class="navi"></div>
-                    <div class="clear"></div>
-                </div>
-                <!--Navigation Button Top End-->
-            <?php endif;?>
+        <?php if($params->get('show_secondary',0)) :?>
+            <?php if($sec_items != 0):?>
+            <!-- Secondary Content Start -->
+            <div class="xc-sec <?php echo ((int)$params->get('sec_item_flow') == 1)? 'xc-cols' : 'xc-rows' ?> <?php echo $params->get('sec_col_position')?>" style="width:<?php echo $sec_width; ?>px;">
+                <?php /*Scroller*/ if($params->get('sec_scrollable') AND $params->get('sec_navigation_position') == 'top'):?>
+                    <!--Navigation Button Start-->
+                    <div class="xc-navigator <?php echo $params->get('sec_navigation_type'); ?>">
+                        <div class="navi"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--Navigation Button Top End-->
+                <?php endif;?>
 
-            <div id="<?php echo $module_id.'-sec'; ?>" class="xc-scroller" style="height:<?php echo $sec_height;?>px;width:<?php echo $sec_width; ?>px">
-                <div class="xc-items">
-                    <?php for($pan=0;$pan<$sec_pans;$pan++):?>
-                        <div class="xc-pane" style="width:<?php echo $sec_width; ?>px;">
-                            <?php for($item=0;$item<$sec_cols;$item++,$i++):?>
-                                <?php if($i >= $total_items) break;?>
-                                <div class="xc-item-wrap <?php echo ($i%2)? 'even': 'odd';?>" style="width:<?php echo $sec_item_width?>%">
-                                    <div class="xc-item">
+                <div id="<?php echo $module_id.'-sec'; ?>" class="xc-scroller" style="height:<?php echo $sec_height;?>px;width:<?php echo $sec_width; ?>px">
+                    <div class="xc-items">
+                        <?php for($pan=0;$pan<$sec_pans;$pan++):?>
+                            <div class="xc-pane" style="width:<?php echo $sec_width; ?>px;">
+                                <?php for($item=0;$item<$sec_cols;$item++,$i++):?>
+                                    <?php if($i >= $total_items) break;?>
+                                    <div class="xc-item-wrap <?php echo ($i%2)? 'even': 'odd';?>" style="width:<?php echo $sec_item_width?>%">
+                                        <div class="xc-item">
 
-                                        <?php /*Image position top*/ if($params->get('sec_show_image') AND $params->get('sec_image_position') != 'bottom'):?>
-                                            <div class="xc-image <?php echo $params->get('sec_image_position'); ?>">
-                                                <?php if($params->get('sec_image_link')):?>
-                                                    <a href="<?php echo $lists[$i]->link; ?>">
-                                                <?php endif;?>
-                                                    <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $sec_image_width; ?>px" height="<?php echo $sec_image_height; ?>px" />
-                                                 <?php if($params->get('sec_image_link')):?>
-                                                    </a>
-                                                <?php endif;?>
-                                            </div>
-                                        <?php endif;?>
+                                            <?php /*Image position top*/ if($params->get('sec_show_image') AND $params->get('sec_image_position') != 'bottom'):?>
+                                                <div class="xc-image <?php echo $params->get('sec_image_position'); ?>">
+                                                    <?php if($params->get('sec_image_link')):?>
+                                                        <a href="<?php echo $lists[$i]->link; ?>">
+                                                    <?php endif;?>
+                                                        <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $sec_image_width; ?>px" height="<?php echo $sec_image_height; ?>px" />
+                                                     <?php if($params->get('sec_image_link')):?>
+                                                        </a>
+                                                    <?php endif;?>
+                                                </div>
+                                            <?php endif;?>
 
-                                        <?php /*Item Title*/ if($params->get('sec_show_tile')):?>
-                                            <h4 class="xc-title">
-                                                <?php if($params->get('sec_tile_link')):?>
-                                                    <a href="<?php echo $lists[$i]->link; ?>">
-                                                <?php endif;?>
-                                                    <?php echo $lists[$i]->title;?>
-                                                <?php if($params->get('sec_tile_link')):?>
-                                                    </a>
-                                                <?php endif;?>
-                                            </h4>
-                                        <?php endif;?>
+                                            <?php /*Item Title*/ if($params->get('sec_show_tile')):?>
+                                                <h4 class="xc-title">
+                                                    <?php if($params->get('sec_tile_link')):?>
+                                                        <a href="<?php echo $lists[$i]->link; ?>">
+                                                    <?php endif;?>
+                                                        <?php echo $lists[$i]->title;?>
+                                                    <?php if($params->get('sec_tile_link')):?>
+                                                        </a>
+                                                    <?php endif;?>
+                                                </h4>
+                                            <?php endif;?>
 
-                                        <?php /*Image position bottom*/ if($params->get('sec_show_image') AND $params->get('sec_image_position') == 'bottom'):?>
-                                           <div class="xc-image <?php echo $params->get('sec_image_position'); ?>">
-                                                <?php if($params->get('sec_image_link')):?>
-                                                    <a href="<?php echo $lists[$i]->link; ?>">
-                                                <?php endif;?>
-                                                    <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $sec_image_width; ?>px" height="<?php echo $sec_image_height; ?>px" />
-                                                 <?php if($params->get('sec_image_link')):?>
-                                                    </a>
-                                                <?php endif;?>
-                                            </div>
-                                        <?php endif;?>
+                                            <?php /*Image position bottom*/ if($params->get('sec_show_image') AND $params->get('sec_image_position') == 'bottom'):?>
+                                               <div class="xc-image <?php echo $params->get('sec_image_position'); ?>">
+                                                    <?php if($params->get('sec_image_link')):?>
+                                                        <a href="<?php echo $lists[$i]->link; ?>">
+                                                    <?php endif;?>
+                                                        <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $sec_image_width; ?>px" height="<?php echo $sec_image_height; ?>px" />
+                                                     <?php if($params->get('sec_image_link')):?>
+                                                        </a>
+                                                    <?php endif;?>
+                                                </div>
+                                            <?php endif;?>
 
-                                        <?php /*Item date*/ if($params->get('sec_show_date')):?>
-                                            <p class="xc-date"><?php echo JHTML::_('date',$lists[$i]->created, JText::_('DATE_FORMAT_LC3')); ?></p>
-                                        <?php endif;?>
+                                            <?php /*Item date*/ if($params->get('sec_show_date')):?>
+                                                <p class="xc-date"><?php echo JHTML::_('date',$lists[$i]->created, JText::_('DATE_FORMAT_LC3')); ?></p>
+                                            <?php endif;?>
 
-                                        <?php /*Item Intro*/ if($params->get('sec_show_intro')):?>
-                                            <div class="xc-intro">
-                                                <?php echo modXpertContentsHelper::prepareIntroText($lists[$i]->introtext,$params->get('sec_intro_limit',120)); ?>
-                                                <?php /*Readmore lik*/ if($params->get('sec_readmore')):?>
-                                                    <p class="xc-readmore">
-                                                        <a href="<?php echo $lists[$i]->link; ?>"><?php echo JText::_('READ MORE')?></a>
-                                                    </p>
-                                                <?php endif;?>
-                                            </div>
-                                        <?php endif;?>
+                                            <?php /*Item Intro*/ if($params->get('sec_show_intro')):?>
+                                                <div class="xc-intro">
+                                                    <?php echo modXpertContentsHelper::prepareIntroText($lists[$i]->introtext,$params->get('sec_intro_limit',120)); ?>
+                                                    <?php /*Readmore lik*/ if($params->get('sec_readmore')):?>
+                                                        <p class="xc-readmore">
+                                                            <a href="<?php echo $lists[$i]->link; ?>"><?php echo JText::_('READ MORE')?></a>
+                                                        </p>
+                                                    <?php endif;?>
+                                                </div>
+                                            <?php endif;?>
 
+                                        </div>
                                     </div>
-                                </div>
-                            <?php endfor; ?>
-                        </div>
-                    <?php endfor; ?>
+                                <?php endfor; ?>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
                 </div>
+
+                <?php /*Scroller*/ if($params->get('sec_scrollable') AND $params->get('sec_navigation_position') == 'bottom'):?>
+                    <!--Navigation Button Start-->
+                    <div class="xc-navigator <?php echo $params->get('sec_navigation_type'); ?>">
+                        <div class="navi"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--Navigation Button End-->
+                <?php endif;?>
+
             </div>
-
-            <?php /*Scroller*/ if($params->get('sec_scrollable') AND $params->get('sec_navigation_position') == 'bottom'):?>
-                <!--Navigation Button Start-->
-                <div class="xc-navigator <?php echo $params->get('sec_navigation_type'); ?>">
-                    <div class="navi"></div>
-                    <div class="clear"></div>
-                </div>
-                <!--Navigation Button End-->
+           <!-- Secondary Content End -->
             <?php endif;?>
-
-        </div>
-       <!-- Secondary Content End -->
         <?php endif;?>
         <div class="clear"></div>
+
     </div>
     <!--Xpert Contents by ThemeXpert- End-->
 <?php endif;?>

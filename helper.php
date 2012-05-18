@@ -103,8 +103,13 @@ abstract class modXpertContentsHelper{
 
         if($isStyleLoaded) return;
 
-        $doc->addStyleSheet(JURI::root(true).'/modules/mod_xpertcontents/interface/css/xpertcontents.css');
-        $isStyleLoaded = TRUE;
+        if (file_exists(JPATH_SITE.DS.'templates'.DS.$template.'/css/xpertcontents.css')) {
+           $doc->addStyleSheet(JURI::root(true).'/templates/'.$template.'/css/xpertcontents.css');
+        }    
+        else {
+            $doc->addStyleSheet(JURI::root(true).'/modules/mod_xpertcontents/interface/css/xpertcontents.css');
+            $isStyleLoaded = TRUE;
+        }
         
     }
 

@@ -49,6 +49,8 @@
                     <option value="k2">K2 Content</option>
                     <option value="easyblog">Easy Blog</option>
                 </field>
+                
+                <field name="show_secondary" type="toggle" value="1" label="Show Secondary" description="Show/Hide Secondary Column" />
 
                 </fieldset>
             
