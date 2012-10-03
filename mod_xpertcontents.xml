@@ -17,6 +17,7 @@
         <folder>admin</folder>
         <folder>interface</folder>
         <folder>fields</folder>
+        <folder>libs</folder>
         <folder>tmpl</folder>
     </files>
 

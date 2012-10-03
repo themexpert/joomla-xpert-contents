@@ -147,16 +147,16 @@ abstract class modXpertContentsHelper{
      * @return $image path
      *
      */
-    public static function getImage($text) {
-
-        if(preg_match("/\<img.+?src=\"(.+?)\".+?\/>/", $text, $matches)){
+    public static function getImage($text)
+    {
+        if(preg_match("/\<img.+?src=\"(.+?)\".+?\>/", $text, $matches)){
             $image_path='';
 
             $paths = array();
 
             if (isset($matches[1])) {
                 $image_path = $matches[1];
-                $image_path = JURI::Root(True)."/".$image_path;
+                //$image_path = JURI::Root(True)."/".$image_path;
             }
             return $image_path;
         }
@@ -276,7 +276,18 @@ abstract class modXpertContentsHelper{
             }
 
             $item->introtext = JHtml::_('content.prepare', $item->introtext);
-            $item->image = self::getImage($item->introtext);
+
+            //Take advantage from joomla default Intro image system
+            $images = json_decode($item->images);
+
+            if( isset($images->image_intro) and !empty($images->image_intro))
+            {
+               $item->image = $images->image_intro;
+            }else{
+               //get image from article intro text
+               $item->image = self::getImage($item->introtext);
+            }
+            //$item->image = self::getImage($item->introtext);
 
         }
 
@@ -538,6 +549,38 @@ abstract class modXpertContentsHelper{
         }
 
         return $posts;
+    }
+    
+    public static function getResizedImage($path, $width, $height, $params){
+        
+        jimport('joomla.filesystem.folder');
+        jimport('joomla.filesystem.file');
+
+        if( !file_exists($path) ) return ;
+
+        include_once 'libs/xpertthumb.php';
+        $xt = new XpertThumb($path);
+
+        $image_info = pathinfo($path);
+        $image_size = getimagesize($path);
+
+        $cache_path = JPATH_ROOT. '/cache/mod_xpertcontents';
+
+        // create cache folder if not exist
+        JFolder::create($cache_path, 0755);
+
+        $name = md5( $image_info['basename'].$width.$height).'_resized';
+
+        $newpath = $cache_path . '/' . $name . '.' . $image_info['extension'];
+
+        $image_uri = JURI::base(true). '/cache/mod_xpertcontents/'  . $name . '.' . $image_info['extension'];
+
+        if(!file_exists($newpath))
+        {
+            $xt->resize( $width, $height , true, 1 )
+                ->toFile( $newpath );
+        }
+        return $image_uri;
     }
 
 }

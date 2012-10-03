@@ -80,7 +80,7 @@ $i = 0;
                                             <?php if($params->get('primary_image_link')):?>
                                                 <a href="<?php echo $lists[$i]->link; ?>">
                                             <?php endif;?>
-                                                <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $primary_image_width; ?>px" height="<?php echo $primary_image_height; ?>px" />
+                                                <img src="<?php echo modXpertContentsHelper::getResizedImage($lists[$i]->image, $primary_image_width, $primary_image_height, $params); ?>" alt="<?php echo $lists[$i]->title; ?>" />
                                              <?php if($params->get('primary_image_link')):?>
                                                 </a>
                                             <?php endif;?>
@@ -108,7 +108,7 @@ $i = 0;
                                             <?php if($params->get('primary_image_link')):?>
                                                 <a href="<?php echo $lists[$i]->link; ?>">
                                             <?php endif;?>
-                                                <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $primary_image_width; ?>px" height="<?php echo $primary_image_height; ?>px" />
+                                                <img src="<?php echo modXpertContentsHelper::getResizedImage($lists[$i]->image, $primary_image_width, $primary_image_height, $params); ?>" alt="<?php echo $lists[$i]->title; ?>" />
                                              <?php if($params->get('primary_image_link')):?>
                                                 </a>
                                             <?php endif;?>
@@ -171,7 +171,7 @@ $i = 0;
                                                     <?php if($params->get('sec_image_link')):?>
                                                         <a href="<?php echo $lists[$i]->link; ?>">
                                                     <?php endif;?>
-                                                        <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $sec_image_width; ?>px" height="<?php echo $sec_image_height; ?>px" />
+                                                        <img src="<?php echo modXpertContentsHelper::getResizedImage($lists[$i]->image, $sec_image_width, $sec_image_height, $params); ?>" alt="<?php echo $lists[$i]->title; ?>" />
                                                      <?php if($params->get('sec_image_link')):?>
                                                         </a>
                                                     <?php endif;?>
@@ -195,7 +195,7 @@ $i = 0;
                                                     <?php if($params->get('sec_image_link')):?>
                                                         <a href="<?php echo $lists[$i]->link; ?>">
                                                     <?php endif;?>
-                                                        <img src="<?php echo $lists[$i]->image; ?>" alt="<?php echo $lists[$i]->title; ?>" width="<?php echo $sec_image_width; ?>px" height="<?php echo $sec_image_height; ?>px" />
+                                                        <img src="<?php echo modXpertContentsHelper::getResizedImage($lists[$i]->image, $sec_image_width, $sec_image_height, $params); ?>" alt="<?php echo $lists[$i]->title; ?>" />
                                                      <?php if($params->get('sec_image_link')):?>
                                                         </a>
                                                     <?php endif;?>
