@@ -177,7 +177,8 @@ abstract class modXpertContentsHelper{
         $text = strip_tags($text,"</strong></em></a></span></p>");
 
         if(strlen($text)>$num_character && $num_character!=0){
-            $text1 = substr ($text, 0, $num_character) . "..";
+            //$text1 = substr ($text, 0, $num_character) . "..";
+            $text1 = JHtml::_('string.truncate', $text, $num_character, true, false )  . "..";
             return $text1;
         }
         else return $text;
