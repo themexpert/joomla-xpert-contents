@@ -120,7 +120,7 @@ $i = 0;
                                             <?php echo modXpertContentsHelper::prepareIntroText($lists[$i]->introtext,$params->get('primary_intro_limit',120)); ?>
                                             <?php /*Readmore lik*/ if($params->get('primary_readmore')):?>
                                                 <p class="xc-readmore">
-                                                    <a href="<?php echo $lists[$i]->link; ?>"><?php echo JText::_('READ MORE')?></a>
+                                                    <a href="<?php echo $lists[$i]->link; ?>"><?php echo $params->get('primary_readmore_text', 'Read more'); ?></a>
                                                 </p>
                                             <?php endif;?>
                                         </div>
@@ -211,7 +211,7 @@ $i = 0;
                                                     <?php echo modXpertContentsHelper::prepareIntroText($lists[$i]->introtext,$params->get('sec_intro_limit',120)); ?>
                                                     <?php /*Readmore lik*/ if($params->get('sec_readmore')):?>
                                                         <p class="xc-readmore">
-                                                            <a href="<?php echo $lists[$i]->link; ?>"><?php echo JText::_('READ MORE')?></a>
+                                                            <a href="<?php echo $lists[$i]->link; ?>"><?php echo $params->get('sec_readmore_text', 'Read more');?></a>
                                                         </p>
                                                     <?php endif;?>
                                                 </div>
