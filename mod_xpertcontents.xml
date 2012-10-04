@@ -173,6 +173,8 @@
                 <field name="primary_show_tile" type="toggle" value="1" label="SHOW_TITLE" description="SHOW_TITLE_DESC" />
 
                 <field name="primary_tile_link" type="toggle" value="1" label="TITLE_LINK" description="TITLE_LINK_DESC" />
+                <field name="primary_show_category" type="toggle" value="1" label="SHOW_CATEGORY" description="SHOW_CATEGORY_DESC" />
+                <field name="primary_category_link" type="toggle" value="1" label="CATEGORY_LINK" description="CATEGORY_LINK_DESC" />
 
                 <field name="primary_show_intro" type="toggle" value="1" label="SHOW_INTRO" description="SHOW_INTRO_DESC" />
 
@@ -239,6 +241,9 @@
                 <field name="sec_show_tile" type="toggle" value="1" label="SHOW_TITLE" description="SHOW_TITLE_DESC" />
 
                 <field name="sec_tile_link" type="toggle" value="1" label="TITLE_LINK" description="TITLE_LINK_DESC" />
+
+                <field name="sec_show_category" type="toggle" value="1" label="SHOW_CATEGORY" description="SHOW_CATEGORY_DESC" />
+                <field name="sec_category_link" type="toggle" value="1" label="CATEGORY_LINK" description="CATEGORY_LINK_DESC" />
 
                 <field name="sec_show_intro" type="toggle" value="1" label="SHOW_INTRO" description="SHOW_INTRO_DESC" />
 

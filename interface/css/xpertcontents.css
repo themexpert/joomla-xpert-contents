@@ -34,9 +34,19 @@
 }
 .xc-item:hover{ background: #eee; }
 
+/*Common*/
+h3.xc-title,
+h4.xc-title,
+.xc-cat,
+.xc-date,
+.xc-image,
+.xc-intro,
+.xc-readmore{ margin: 10px 0 0}
+
 /*Image*/
 .xc-image.top,
 .xc-image.bottom{ display: block; }
+.xc-image.top{ margin-top: 0;}
 .xc-image.left{ float: left; margin:0 8px 0 0; }
 .xc-image.right{ float:right; margin:0 0 0 8px;}
 
@@ -44,23 +54,24 @@
 h3.xc-title{
     font-size: 16px;
     line-height: 18px;
-    margin: 5px 0 6px !important; /* !important to avoid influence other css */
 }
 h4.xc-title{
     font-size: 13px;
     line-height: 13px;
-    margin: 5px 0 6px;
 }
 h3.xc-title a,
 h4.xc-title a{ text-decoration: none; }
 
 /*Date*/
-.xc-date{
+.xc-date,
+.xc-cat{
     font-size: 10px;
     font-style: italic;
     line-height: 12px;
-    margin: 2px 0 2px;
+    display: inline-block;
 }
+.xc-cat{margin-right: 10px;}
+
 /*Intro*/
 .xc-intro{
     font-size: 12px;

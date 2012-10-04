@@ -276,6 +276,10 @@ abstract class modXpertContentsHelper{
                     $item->link = JRoute::_('index.php?option=com_user&view=login');
             }
 
+            // category name & link
+            $item->catname = $item->category_title;
+            $item->catlink = JRoute::_(ContentHelperRoute::getCategoryRoute($item->catid));
+
             $item->introtext = JHtml::_('content.prepare', $item->introtext);
 
             //Take advantage from joomla default Intro image system
@@ -291,7 +295,7 @@ abstract class modXpertContentsHelper{
             //$item->image = self::getImage($item->introtext);
 
         }
-
+        //echo "<pre>"; print_r($items); echo "</pre>";
         return $items;
     }
 
@@ -471,10 +475,12 @@ abstract class modXpertContentsHelper{
 				//Read more link
 				$item->link = urldecode(JRoute::_(K2HelperRoute::getItemRoute($item->id.':'.urlencode($item->alias), $item->catid.':'.urlencode($item->categoryalias))));
 
+                //category name & link
+                $item->catname = $item->categoryname;
+                $item->catlink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->catid)));
 
                 //Item Image
                 $item->image = self::getK2Images($item->id,$item->title,$item->introtext);
-
 
             }
         }

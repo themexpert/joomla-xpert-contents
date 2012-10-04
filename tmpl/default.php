@@ -99,6 +99,18 @@ $i = 0;
                                         </h3>
                                     <?php endif;?>
 
+                                    <?php /*Item category*/ if($params->get('primary_show_category')):?>
+                                        <p class="xc-cat">
+                                            <?php if($params->get('primary_category_link')):?>
+                                                <a href="<?php echo $lists[$i]->catlink; ?>">
+                                            <?php endif;?>
+                                                <?php echo $lists[$i]->catname; ?>
+                                            <?php if($params->get('primary_category_link')):?>
+                                                </a>
+                                            <?php endif;?>
+                                        </p>
+                                    <?php endif;?>
+
                                     <?php /*Item date*/ if($params->get('primary_show_date')):?>
                                         <p class="xc-date"><?php echo JHTML::_('date',$lists[$i]->created, JText::_('DATE_FORMAT_LC3')); ?></p>
                                     <?php endif;?>
@@ -200,6 +212,18 @@ $i = 0;
                                                         </a>
                                                     <?php endif;?>
                                                 </div>
+                                            <?php endif;?>
+
+                                            <?php /*Item category*/ if($params->get('sec_show_category')):?>
+                                                <p class="xc-cat">
+                                                    <?php if($params->get('sec_category_link')):?>
+                                                        <a href="<?php echo $lists[$i]->catlink; ?>">
+                                                    <?php endif;?>
+                                                        <?php echo $lists[$i]->catname; ?>
+                                                    <?php if($params->get('sec_category_link')):?>
+                                                        </a>
+                                                    <?php endif;?>
+                                                </p>
                                             <?php endif;?>
 
                                             <?php /*Item date*/ if($params->get('sec_show_date')):?>
