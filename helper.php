@@ -565,7 +565,10 @@ abstract class modXpertContentsHelper{
 
         if( !file_exists($path) ) return ;
 
-        include_once 'libs/xpertthumb.php';
+        if(!class_exists('XpertThumb')){
+            include_once 'libs/xpertthumb.php';
+        }
+        
         $xt = new XpertThumb($path);
 
         $image_info = pathinfo($path);
