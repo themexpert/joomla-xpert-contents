@@ -316,7 +316,7 @@ abstract class modXpertContentsHelper{
 		$db = &JFactory::getDBO();
 
 		$jnow = &JFactory::getDate();
-		$now = $jnow->toMySQL();
+		$now = $jnow->toSql();
 		$nullDate = $db->getNullDate();
 
         $query = "SELECT i.*, c.name AS categoryname,c.id AS categoryid, c.alias AS categoryalias, c.params AS categoryparams";
@@ -335,13 +335,7 @@ abstract class modXpertContentsHelper{
         if ($ordering == 'comments')
         $query .= " LEFT JOIN #__k2_comments comments ON comments.itemID = i.id";
 
-        if(K2_JVERSION=='16'){
-            $query .= " WHERE i.published = 1 AND i.access IN(".implode(',', $user->authorisedLevels()).") AND i.trash = 0 AND c.published = 1 AND c.access IN(".implode(',', $user->authorisedLevels()).")  AND c.trash = 0";
-        }
-        else {
-            $query .= " WHERE i.published = 1 AND i.access <= {$aid} AND i.trash = 0 AND c.published = 1 AND c.access <= {$aid} AND c.trash = 0";
-        }
-
+        $query .= " WHERE i.published = 1 AND i.access IN(".implode(',', $user->getAuthorisedViewLevels()).") AND i.trash = 0 AND c.published = 1 AND c.access IN(".implode(',', $user->getAuthorisedViewLevels()).")  AND c.trash = 0";
         $query .= " AND ( i.publish_up = ".$db->Quote($nullDate)." OR i.publish_up <= ".$db->Quote($now)." )";
         $query .= " AND ( i.publish_down = ".$db->Quote($nullDate)." OR i.publish_down >= ".$db->Quote($now)." )";
 
@@ -383,12 +377,11 @@ abstract class modXpertContentsHelper{
         if ($ordering == 'comments')
         $query .= " AND comments.published = 1";
 
-        if(K2_JVERSION=='16'){
-            if($mainframe->getLanguageFilter()) {
-                $languageTag = JFactory::getLanguage()->getTag();
-                $query .= " AND c.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") AND i.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').")";
-            }
+        if($mainframe->getLanguageFilter()) {
+            $languageTag = JFactory::getLanguage()->getTag();
+            $query .= " AND c.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") AND i.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').")";
         }
+
 
         switch ($ordering) {
 
@@ -461,9 +454,6 @@ abstract class modXpertContentsHelper{
         $query .= " ORDER BY ".$orderby;
         $db->setQuery($query, 0, $limit);
         $items = $db->loadObjectList();
-
-        require_once (JPATH_SITE.DS.'components'.DS.'com_k2'.DS.'models'.DS.'item.php');
-		$model = new K2ModelItem;
 
 		if (count($items)) {
 
