@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="1.7.0" client="site" method="upgrade">
+<extension type="module" version="2.5" client="site" method="upgrade">
 	<name>Xpert Contents</name>
 	<author>ThemeXpert</author>
-	<creationDate>Sep 2011</creationDate>
+	<creationDate>3/4/2014</creationDate>
 	<copyright>Copyright (C) 20010 - 2012 ThemeXpert. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
 	<authorEmail>support@themexpert.com</authorEmail>
@@ -14,260 +14,19 @@
         <filename module="mod_xpertcontents">mod_xpertcontents.php</filename>
         <filename>helper.php</filename>
         <filename>index.html</filename>
-        <folder>admin</folder>
-        <folder>interface</folder>
-        <folder>fields</folder>
-        <folder>libs</folder>
+        <folder>assets</folder>
         <folder>tmpl</folder>
     </files>
 
     <languages folder="language">
          <language tag="en-GB">en-GB.mod_xpertcontents.ini</language>
-         <language tag="pl-PL">pl-PL.mod_xpertcontents.ini</language>
+         <!-- <language tag="pl-PL">pl-PL.mod_xpertcontents.ini</language> -->
     </languages>
 
     <config>
         <fields name="params" addfieldpath="modules/mod_xpertcontents/fields">
-            <fieldset name="INFO_UPDATES">
-                <field name="utility" type="utility" />
-            </fieldset>
 
-            <fieldset name="GLOBAL_SETTINGS">
-                <field name="auto_module_id" type="toggle" value="1" label="AUTO_MODULE_ID" description="AUTO_MODULE_ID_DESC" />
-
-                <field name="module_unique_id" type="text" default="xc_1" label="MODULE_UNIQUE_ID" description="MODULE_UNIQUE_ID_DESC" />
-
-                <field name="moduleclass_sfx" type="text" default="" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-
-               <field name="load_jquery" type="toggle" value="1" label="LOAD_JQUERY" description="LOAD_JQUERY_DESC" />
-
-                <field name="jquery_source" type="list" default="local" label="jQuery Source" description="Select Jquery Source. Google CDN is recommended for live site.">
-                    <option value="local">From Module Core</option>
-                    <option value="google_cdn">From Google CDN</option>
-                </field>
-
-                <field name="content_source" type="list" default="1" label="CONTENT_SOURCE" description="CONTENT_SOURCE_DESC">
-                    <option value="joomla">Joomla</option>
-                    <option value="k2">K2 Content</option>
-                    <option value="easyblog">Easy Blog</option>
-                </field>
-
-                <field name="show_secondary" type="toggle" value="1" label="Show Secondary" description="Show/Hide Secondary Column" />
-
-                </fieldset>
-
-            <fieldset name="JOOMLA_CONTENT_SETTINGS">
-               <field name="catid" type="category" extension="com_content" multiple="true" size="10" default="" label="JCATEGORY" description="Select Category" >
-                    <option value="">JOPTION_ALL_CATEGORIES</option>
-                </field>
-
-                <field name="ordering" type="list" default="published" label="Ordering" description="">
-                    <option value="c_dsc">Recently Added First</option>
-                    <option value="m_dsc">Recently Modified First</option>
-                    <option value="p_dsc">Recently Published First</option>
-                    <option value="mc_dsc">Recently Touched First</option>
-                </field>
-
-                <field name="user_id" type="list" default="0" label="Authors" description="">
-                    <option value="0">Anyone</option>
-                    <option value="by_me">Added or modified by me</option>
-                    <option value="not_me">Not added or modified by me</option>
-                </field>
-
-                <field name="show_featured" type="list" default="" label="Featured Articles" description="">
-                    <option value="">JSHOW</option>
-                    <option value="0">JHIDE</option>
-                    <option value="1">JFEATURED</option>
-                </field>
-            </fieldset>
-
-            <fieldset name="K2_CONTENT_SETTINGS">
-                <field name="catfilter" type="radio" default="0" label="K2_CATEGORY_FILTER" description="">
-                      <option value="0">K2_ALL</option>
-                      <option value="1">K2_SELECT</option>
-                </field>
-                <field name="category_id" type="categoriesmultiple" default="" label="K2_CATEGORIES" description="K2_CATEGORIES_DESC"/>
-                <field name="getChildren" type="toggle" value="1" label="K2_CHILDREN_CATEGORIES" description="" />
-                <field name="itemsOrdering" type="list" default="" label="K2_ITEM_ORDERING" description="">
-                  <option value="">K2_DEFAULT</option>
-                  <option value="date">K2_OLDEST_FIRST</option>
-                  <option value="rdate">K2_MOST_RECENT_FIRST</option>
-                  <option value="alpha">K2_TITLE_ALPHABETICAL</option>
-                  <option value="ralpha">K2_TITLE_REVERSEALPHABETICAL</option>
-                  <option value="order">K2_ORDERING</option>
-                  <option value="rorder">K2_ORDERING_REVERSE</option>
-                  <option value="hits">K2_MOST_POPULAR</option>
-                  <option value="best">K2_HIGHEST_RATED</option>
-                  <option value="comments">K2_MOST_COMMENTED</option>
-                  <option value="modified">K2_LATEST_MODIFIED</option>
-                  <option value="rand">K2_RANDOM_ORDERING</option>
-                </field>
-                <field name="FeaturedItems" type="list" default="1" label="K2_FEATURED_ITEMS" description="">
-                  <option value="0">K2_HIDE</option>
-                  <option value="1">K2_SHOW</option>
-                  <option value="2">K2_SHOW_ONLY_FEATURED_ITEMS</option>
-                </field>
-                <field name="popularityRange" type="list" default="" label="K2_TIME_RANGE" description="K2_TIME_RANGE_DESC">
-                  <option value="">K2_ALL_TIME</option>
-                  <option value="1">K2_1_DAY</option>
-                  <option value="3">K2_3_DAYS</option>
-                  <option value="7">K2_1_WEEK</option>
-                  <option value="15">K2_2_WEEKS</option>
-                  <option value="30">K2_1_MONTH</option>
-                  <option value="180">K2_6_MONTHS</option>
-                </field>
-
-            </fieldset>
-
-            <fieldset name="EASY_BLOG_CONTENT_SETTINGS">
-                <field name="ezcatid" type="ezbcategories" label="EZB_CATEGORY" description="EZB_CATEGORY_DESC" />
-            </fieldset>
-
-            <fieldset name="PRIMARY_CONTENT_SETTINGS">
-
-                <field name="primary_item_count" type="text" default="4" label="ITEM_COUNT" description="ITEM_COUNT_DESC" />
-
-                <field name="primary_item_flow" type="list" default="1" label="ITEM_FLOW" description="ITEM_FLOW_DESC">
-                    <option value="1">Horizontal</option>
-                    <option value="2">Vertical</option>
-                </field>
-
-                <field name="primary_num_col" type="text" default="2" label="NUM_OF_COLUMN" description="NUM_OF_COLUMN_DESC" />
-
-                <field name="primary_width" type="text" default="70" label="PRIMARY_WIDTH" description="PRIMARY_WIDTH_DESC" />
-
-                <field name="primary_height" type="text" default="369" label="PRIMARY_HEIGHT" description="PRIMARY_HEIGHT_DESC" />
-
-                <field name="primary_scroller_spacer" type="spacer" text="SCROLLER_SETTINGS" description="IMAGE_SETTINGS_DESC" />
-
-                <field name="primary_scrollable" type="toggle" value="1" label="SCROLLABLE" description="SCROLLABLE_DESC" />
-
-                <field name="primary_navigation_type" type="list" default="bullets" label="NAVIGATION_TYPE" description="NAVIGATION_TYPE_DESC">
-                    <option value="bullets">Bullets</option>
-                    <option value="pagination">Pagination</option>
-                </field>
-
-                <field name="primary_navigation_position" type="list" default="bottom" label="NAVIGATION_POSITION" description="NAVIGATION_POSITION_DESC">
-                    <option value="top">Top</option>
-                    <option value="bottom">Bottom</option>
-                </field>
-
-                <field name="primary_image_spacer" type="spacer" text="IMAGE_SETTINGS" description="IMAGE_SETTINGS_DESC" />
-
-                 <field name="primary_show_image" type="toggle" value="1" label="SHOW_IMAGE" description="SHOW_IMAGE_DESC" />
-
-                <field name="primary_image_position" type="list" default="top" label="IMAGE_POSITION" description="IMAGE_POSITION_DESC">
-                    <option value="top">Top</option>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                    <option value="bottom">Bottom</option>
-                </field>
-
-                <field name="primary_image_link" type="toggle" value="1" label="IMAGE_LINK" description="IMAGE_LINK_DESC" />
-
-                <field name="primary_image_width" type="text" default="120" label="IMAGE_WIDTH" description="IMAGE_WIDTH_DESC" />
-
-                <field name="primary_image_height" type="text" default="100" label="IMAGE_HEIGHT" description="IMAGE_HEIGHT_DESC" />
-
-                <field name="primary_display_spacer" type="spacer" text="DISPLAY_SETTINGS" description="DISPLAY_SETTINGS_DESC" />
-
-                <field name="primary_show_tile" type="toggle" value="1" label="SHOW_TITLE" description="SHOW_TITLE_DESC" />
-
-                <field name="primary_tile_link" type="toggle" value="1" label="TITLE_LINK" description="TITLE_LINK_DESC" />
-                <field name="primary_show_category" type="toggle" value="1" label="SHOW_CATEGORY" description="SHOW_CATEGORY_DESC" />
-                <field name="primary_category_link" type="toggle" value="1" label="CATEGORY_LINK" description="CATEGORY_LINK_DESC" />
-
-                <field name="primary_show_intro" type="toggle" value="1" label="SHOW_INTRO" description="SHOW_INTRO_DESC" />
-
-                <field name="primary_intro_limit" type="text" default="120" label="INTRO_LIMIT" description="INTRO_LIMIT_DESC" />
-
-                <field name="primary_show_date" type="toggle" value="1" label="SHOW_DATE" description="SHOW_DATE_DESC" />
-
-                <field name="primary_readmore" type="toggle" value="1" label="SHOW_READMORE" description="SHOW_READMORE_DESC" />
-                <field name="primary_redmore_text" type="text" default="Read More" label="READMORE" description="READMORE_DESC" />
-
-            </fieldset>
-
-            <fieldset name="SECONDARY_CONTENT_SETTINGS">
-
-                <field name="sec_item_count" type="text" default="4" label="ITEM_COUNT" description="ITEM_COUNT_DESC" />
-
-                <field name="sec_item_flow" type="list" default="2" label="ITEM_FLOW" description="ITEM_FLOW_DESC">
-                    <option value="1">Horizontal</option>
-                    <option value="2">Vertical</option>
-                </field>
-
-                <field name="sec_num_col" type="text" default="1" label="NUM_OF_COLUMN" description="NUM_OF_COLUMN_DESC" />
-
-                <field name="sec_width" type="text" default="30" label="SECONDARY_WIDTH" description="SECONDARY_WIDTH_DESC" />
-                <field name="sec_height" type="text" default="369" label="SECONDARY_HEIGHT" description="SECONDARY_HEIGHT_DESC" />
-
-                <field name="sec_col_position" type="list" default="right" label="SECONDARY_COL_POSITION" description="SECONDARY_COL_POSITION_DESC">
-                    <option value="right">Right</option>
-                    <option value="bottom">Bottom</option>
-                </field>
-
-                <field name="sec_scroller_spacer" type="spacer" text="SCROLLER_SETTINGS" description="IMAGE_SETTINGS_DESC" />
-                <field name="sec_scrollable" type="toggle" value="1" label="SCROLLABLE" description="SCROLLABLE_DESC" />
-
-                <field name="sec_navigation_type" type="list" default="pagination" label="NAVIGATION_TYPE" description="NAVIGATION_TYPE_DESC">
-                    <option value="bullets">Bullets</option>
-                    <option value="pagination">Pagination</option>
-                </field>
-
-                <field name="sec_navigation_position" type="list" default="bottom" label="NAVIGATION_POSITION" description="NAVIGATION_POSITION_DESC">
-                    <option value="top">Top</option>
-                    <option value="bottom">Bottom</option>
-                </field>
-
-                <field name="sec_image_spacer" type="spacer" text="IMAGE_SETTINGS" description="IMAGE_SETTINGS_DESC" />
-
-                <field name="sec_show_image" type="toggle" value="1" label="SHOW_IMAGE" description="SHOW_IMAGE_DESC" />
-
-                <field name="sec_image_position" type="list" default="top" label="IMAGE_POSITION" description="IMAGE_POSITION_DESC">
-                    <option value="top">Top</option>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                    <option value="bottom">Bottom</option>
-                </field>
-
-                <field name="sec_image_link" type="toggle" value="1" label="IMAGE_LINK" description="IMAGE_LINK_DESC" />
-
-                <field name="sec_image_width" type="text" default="120" label="IMAGE_WIDTH" description="IMAGE_WIDTH_DESC" />
-
-                <field name="sec_image_height" type="text" default="100" label="IMAGE_HEIGHT" description="IMAGE_HEIGHT_DESC" />
-
-                <field name="sec_display_spacer" type="spacer" text="DISPLAY_SETTINGS" description="DISPLAY_SETTINGS_DESC" />
-
-                <field name="sec_show_tile" type="toggle" value="1" label="SHOW_TITLE" description="SHOW_TITLE_DESC" />
-
-                <field name="sec_tile_link" type="toggle" value="1" label="TITLE_LINK" description="TITLE_LINK_DESC" />
-
-                <field name="sec_show_category" type="toggle" value="1" label="SHOW_CATEGORY" description="SHOW_CATEGORY_DESC" />
-                <field name="sec_category_link" type="toggle" value="1" label="CATEGORY_LINK" description="CATEGORY_LINK_DESC" />
-
-                <field name="sec_show_intro" type="toggle" value="1" label="SHOW_INTRO" description="SHOW_INTRO_DESC" />
-
-                <field name="sec_intro_limit" type="text" default="120" label="INTRO_LIMIT" description="INTRO_LIMIT_DESC" />
-
-                <field name="sec_show_date" type="toggle" value="1" label="SHOW_DATE" description="SHOW_DATE_DESC" />
-
-                <field name="sec_readmore" type="toggle" value="1" label="SHOW_READMORE" description="SHOW_READMORE_DESC" />
-
-                <field name="sec_redmore_text" type="text" default="Read More" label="READMORE" description="READMORE_DESC" />
-
-            </fieldset>
-
-            <fieldset name="ADVANCE">
-
-                <field name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
-                    <option value="1">Use global</option>
-                    <option value="0">No caching</option>
-                </field>
-    
-                <field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
-                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
-            </fieldset>
+           
         </fields>
     </config>
     
