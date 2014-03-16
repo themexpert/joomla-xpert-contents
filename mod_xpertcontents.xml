@@ -2,7 +2,7 @@
 <extension type="module" version="2.5" client="site" method="upgrade">
 	<name>mod_xpertcontents</name>
 	<author>ThemeXpert</author>
-	<creationDate>##DATE##/creationDate>
+	<creationDate>##DATE##</creationDate>
 	<copyright>Copyright (C) 20010 - 2012 ThemeXpert. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
 	<authorEmail>support@themexpert.com</authorEmail>

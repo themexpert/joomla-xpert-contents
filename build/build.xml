@@ -92,7 +92,7 @@
             <!--Change version num and date-->
             <filterchain>
                 <replacetokens begintoken="##" endtoken="##">
-                    <token key="DATE" value="${build.date}" />
+                    <token key="DATE" value="${date}" />
                     <token key="VERSION" value="${version}" />
                 </replacetokens>
             </filterchain>
@@ -108,11 +108,27 @@
             <available file="${ext.lang.path}/${ext.lang.sys}" type="file" property="lang.sys" />
             
             <then>
-                <copy todir="${dir.tmp}/${ext.type}_${ext.name}/language" file="${ext.lang.path}/${ext.lang.sys}" overwrite="true" />        
+                <copy todir="${dir.tmp}/${ext.type}_${ext.name}/language" file="${ext.lang.path}/${ext.lang.sys}" overwrite="true">
+                    <!--Change version num and date-->
+                    <filterchain>
+                        <replacetokens begintoken="##" endtoken="##">
+                            <token key="DATE" value="${date}" />
+                            <token key="VERSION" value="${version}" />
+                        </replacetokens>
+                    </filterchain>
+                </copy>        
             </then>
         </if>
 
-        <copy todir="${dir.tmp}/${ext.type}_${ext.name}/language" file="${ext.lang.path}/${ext.lang}" overwrite="true" />
+        <copy todir="${dir.tmp}/${ext.type}_${ext.name}/language" file="${ext.lang.path}/${ext.lang}" overwrite="true">
+            <!--Change version num and date-->
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="DATE" value="${date}" />
+                    <token key="VERSION" value="${version}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
     </target>
 
     <target name="package.installer" description="Copy extension installer">
