@@ -68,11 +68,18 @@ defined( '_JEXEC' ) or die('Restricted access');
 	<!-- Primary Column End -->
 
 	<?php if($secondary_show): ?>
-	<?php $sec_count += $i; ?>
+	<?php $sec_count += $i; $item=0; ?>
 	<!-- Secondary Column Start -->
-		<div class="sec-col xco-media-left">
+		<div class="sec-col xco-col-3">
 			<div class="inner">
-				<?php for( $i; $i<$sec_count; $i++ ): ?>
+				<?php for( $i; $i<$sec_count; $i++, $item++ ): ?>
+				<?php
+					if( $item == 3 )
+					{
+						echo "<div class='clearfix'></div>";
+						$item = 0;
+					}
+				?>
 				<div class="item item-<?php echo $i+1; ?> clearfix">
 					<a href="<?php echo $items[$i]->link; ?>">
 						<div class="image">

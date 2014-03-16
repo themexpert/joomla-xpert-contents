@@ -13,7 +13,7 @@ defined( '_JEXEC' ) or die('Restricted access');
 <!-- Xpert Contents Module ##VERSION## start | Layout-Default -->
 <div id="<?php echo $module_id; ?>" class="xco-wrap xco-<?php echo $layout;?>">
 	<!-- Primary Column Start -->
-	<div class="pri-col">
+	<div class="pri-col xco-media-left">
 		<div class="inner">
 			<?php for($i=0; $i<$primary_count; $i++):?>
 			<div class="item item-<?php echo $i+1; ?>">

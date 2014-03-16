@@ -70,15 +70,11 @@ defined( '_JEXEC' ) or die('Restricted access');
 	<?php if($secondary_show): ?>
 	<?php $sec_count += $i; ?>
 	<!-- Secondary Column Start -->
-		<div class="sec-col xco-media-left">
+		<div class="sec-col">
 			<div class="inner">
 				<?php for( $i; $i<$sec_count; $i++ ): ?>
 				<div class="item item-<?php echo $i+1; ?> clearfix">
 					<a href="<?php echo $items[$i]->link; ?>">
-						<div class="image">
-							<img src="<?php echo $items[$i]->image;?>" alt="<?php echo $items[$i]->title;?>">
-						</div>
-
 						<h3 class="heading"><?php echo $items[$i]->title;?></h3>	
 					</a>
 					<?php /*Meta data*/ if( $params->get('sec_date') ) :?>

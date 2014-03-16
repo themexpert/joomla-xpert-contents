@@ -1,0 +1,196 @@
+<?xml version="1.0" ?>
+<!--
+    ========================================================================
+    Extension build file for Phing
+    written by Parvez Akther
+    
+    Run "phing" from the build directory to build the component, module and plugins
+    ========================================================================
+-->
+<project name="XpertContents Module" default="all">
+
+    <property file="build.properties" />
+    
+    <!-- Default version number; please don't touch it, it's a magic value!  -->
+    <property name="version" value="git" />
+
+    <!-- Our gitversion task works like svnversion, but for Git and Git-SVN repositories -->
+    <taskdef name="gitversion" classname="phingext.GitVersionTask" />
+    <taskdef name="zipme" classname="phingext.ZipmeTask" />
+    <!--
+    =================================================================================================
+        Tasks - General
+    =================================================================================================
+    -->
+    <target name="all" description="Make everything"
+        depends="clean, setup-properties, package">
+    </target>
+
+    <target name="clean" description="Clean release dir">
+        
+        <!-- Delete all zip file in release directory -->
+        <delete quiet="yes" includeemptydirs="true">
+            <fileset dir="${dir.release}">
+                <include name="**" />
+            </fileset>
+        </delete>
+
+        <!-- Delete tmp directory -->
+        <delete dir="${dir.tmp}" includeemptydirs="true" verbose="true" failonerror="true" />
+
+        <!-- Create Temp Dir -->
+        <mkdir dir="${dir.tmp}" />    
+        <mkdir dir="${dir.release}" />
+
+    </target>
+
+    <target name="setup-properties" description="Set up version and build properties">
+
+        <!-- Initialize the build.date timestamp -->
+        <tstamp>
+            <format property="date" pattern="%Y-%m-%d" />
+        </tstamp>
+
+        <if>
+            <equals arg1="${version}" arg2="git" />
+            <then>
+                <gitversion workingcopy="${dir.base}" propertyname="git.lastrevision" />
+                <property name="version" value="${git.lastrevision}" override="true" />
+            </then>
+        </if>
+
+        <echo message="Build date : ${date}" />
+        <echo message="Build version(git) : ${version}" />
+
+    </target>
+
+    <!--
+    =================================================================================================
+        Tasks - Extension Package
+    =================================================================================================
+    -->
+
+    <target name="package.xef" description="Cloning XEF framework from Bitbucket">
+        <!-- Clone XEF repo -->
+        <echo message="Cloning XEF framework from remote repository" />
+        <gitclone 
+            repository="${xef.repo}"
+            targetPath="${dir.tmp}/lib_xef" />
+    </target>
+
+    <target name="package.extension" description="Copy modules files">
+        <echo message="Copying modules file to temp dir" />
+
+        <!-- Copy all module files/folder in temp dir  -->
+        <copy todir="${dir.tmp}/${ext.type}_${ext.name}" overwrite="true">
+
+            <fileset dir="${dir.base}">
+                <include name="**" />
+                <exclude name="build/**" />
+            </fileset>
+
+            <!--Change version num and date-->
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="DATE" value="${build.date}" />
+                    <token key="VERSION" value="${version}" />
+                </replacetokens>
+            </filterchain>
+
+        </copy>        
+    </target>
+
+    <target name="package.language" description="Copy language files">
+        <echo message="Copying language files" />
+        <!-- Copy lang files to module tmp dir -->
+        <!-- If sys file available then copy it -->
+        <if>
+            <available file="${ext.lang.path}/${ext.lang.sys}" type="file" property="lang.sys" />
+            
+            <then>
+                <copy todir="${dir.tmp}/${ext.type}_${ext.name}/language" file="${ext.lang.path}/${ext.lang.sys}" overwrite="true" />        
+            </then>
+        </if>
+
+        <copy todir="${dir.tmp}/${ext.type}_${ext.name}/language" file="${ext.lang.path}/${ext.lang}" overwrite="true" />
+    </target>
+
+    <target name="package.installer" description="Copy extension installer">
+        <!-- Clone XEF repo to installer dir-->
+        <echo message="Cloning Xpert Installer from remote repository" />
+        <gitclone 
+            repository="${xef.installer}"
+            targetPath="${dir.tmp}/installer" />
+
+        <!-- Copy all installer file back to tmp dir -->
+        <copy todir="${dir.tmp}" overwrite="true">
+            <fileset dir="${dir.tmp}/installer">
+                <include name="**" />
+            </fileset>
+            <!--Dynamically add module name-->
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="MODULE_FOLDER" value="${ext.type}_${ext.name}" />
+                    <token key="MODULE_NAME" value="${ext.name}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+        <!-- Remove installer dir -->
+        <delete dir="${dir.tmp}/installer" includeemptydirs="true" verbose="true" failonerror="true" />
+
+        <if>
+            <available file="${dir.build}/installer.xml" type="file" property="installer.local" />
+
+            <then>
+                <copy file="${dir.build}/installer.xml" todir="${dir.tmp}" overwrite="true">
+
+                    <!--Dynamically add module name-->
+                    <filterchain>
+                        <replacetokens begintoken="##" endtoken="##">
+                            <token key="MODULE_FOLDER" value="${ext.type}_${ext.name}" />
+                            <token key="MODULE_NAME" value="${ext.name}" />
+                        </replacetokens>
+                    </filterchain>
+                </copy>
+            </then>
+        </if>
+    </target>
+
+    <target name="package" description="Extension packaging for rlease"
+            depends="clean, setup-properties, package.xef, package.extension, package.language, package.installer">
+        
+        <!-- Build zip package for release -->
+        <!-- <zip
+            destfile="${dir.release}/${ext.type}_${ext.name}.zip"
+            basedir="${dir.tmp}">
+        </zip> -->
+
+        <zipme basedir="${dir.tmp}" destfile="${dir.release}/${ext.type}_${ext.name}.zip" includeemptydirs="true">
+            <fileset dir="${dir.tmp}">
+                <include name="**" />
+            </fileset>
+        </zipme>
+
+        <!-- Delete tmp directory -->
+        <delete dir="${dir.tmp}" includeemptydirs="true" verbose="true" failonerror="true" />
+
+        <!-- Deploy to ThemeXpert server -->
+        <echo message="Deploying to ThemeXpert server" />
+
+        <ftpdeploy 
+          host="${ftp.host}" 
+          port="${ftp.port}" 
+          username="${ftp.username}" 
+          password="${ftp.password}"
+          dir="${ftp.dir}" 
+          passive="true"
+          mode="${ftp.mode}">
+          <fileset dir="${dir.release}">
+            <include name="**"/>
+          </fileset>
+        </ftpdeploy>
+
+    </target>
+
+</project>

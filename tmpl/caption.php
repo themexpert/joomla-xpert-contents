@@ -70,7 +70,7 @@ defined( '_JEXEC' ) or die('Restricted access');
 	<?php if($secondary_show): ?>
 	<?php $sec_count += $i; ?>
 	<!-- Secondary Column Start -->
-		<div class="sec-col xco-media-left">
+		<div class="sec-col">
 			<div class="inner">
 				<?php for( $i; $i<$sec_count; $i++ ): ?>
 				<div class="item item-<?php echo $i+1; ?> clearfix">
