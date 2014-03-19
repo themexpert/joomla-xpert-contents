@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="2.5" client="site" method="upgrade">
-	<name>mod_xpertcontents</name>
-	<author>ThemeXpert</author>
-	<creationDate>##DATE##</creationDate>
-	<copyright>Copyright (C) 20010 - 2012 ThemeXpert. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later</license>
-	<authorEmail>support@themexpert.com</authorEmail>
-	<authorUrl>www.themexpert.com</authorUrl>
-	<version>##VERSION##</version>
+  <name>mod_xpertcontents</name>
+  <author>ThemeXpert</author>
+  <creationDate>##DATE##</creationDate>
+  <copyright>Copyright (C) 20010 - 2012 ThemeXpert. All rights reserved.</copyright>
+  <license>GNU General Public License version 2 or later</license>
+  <authorEmail>support@themexpert.com</authorEmail>
+  <authorUrl>www.themexpert.com</authorUrl>
+  <version>##VERSION##</version>
     <description>MOD_XPERTCONTENTS_XML_DESCRIPTION</description>
 
     <files>
@@ -48,9 +48,9 @@
                 <field name="layout" type="imagepicker" label="Select Layout" description="" />
 
                 <field name="primary_settings" type="spacer" label="PRIMARY_SETTINGS" description="PRIMARY_SETTINGS_DESC" />
-									<field name="primary_count" type="text" default="1"
-													label="XC_PRIMARY_COUNT_LABEL"
-													description="XC_PRIMARY_COUNT_DESC"/>
+                  <field name="primary_count" type="text" default="1"
+                          label="XC_PRIMARY_COUNT_LABEL"
+                          description="XC_PRIMARY_COUNT_DESC"/>
 
                   <field name="primary_category" type="radio" default="1"
                          label="CATEGORY_LABEL"
@@ -103,9 +103,9 @@
 
             <field name="sec_settings" type="spacer" label="SECONDARY_SETTINGS" description="SECONDARY_SETTINGS_DESC" />
 
-							<field name="sec_count" type="text" default="3"
-											label="XC_SEC_COUNT_LABEL"
-											description="XC_SEC_COUNT_DESC"/>
+              <field name="sec_count" type="text" default="3"
+                      label="XC_SEC_COUNT_LABEL"
+                      description="XC_SEC_COUNT_DESC"/>
 
               <field name="sec_date" type="radio" default="0"
                      label="DATE_LABEL"
