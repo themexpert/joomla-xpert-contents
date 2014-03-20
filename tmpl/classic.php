@@ -16,7 +16,7 @@ defined( '_JEXEC' ) or die('Restricted access');
 	<div class="pri-col xco-media-left">
 		<div class="inner">
 			<?php for($i=0; $i<$primary_count; $i++):?>
-			<div class="item item-<?php echo $i+1; ?>">
+			<div class="item item-<?php echo $i+1; ?> clearfix">
 				<a href="<?php echo $items[$i]->link; ?>">
 					<div class="image">
 						<img src="<?php echo $items[$i]->image;?>" alt="<?php echo $items[$i]->title;?>">

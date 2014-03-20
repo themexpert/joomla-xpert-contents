@@ -81,11 +81,16 @@
 .xco-list .sec-col {
   width: 40%;
 }
+.xco-caption .item a {
+  display: block;
+  position: relative;
+}
 .xco-caption .heading {
-  margin: -35px 0 0;
+  margin: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 99;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   color: #FFF;
   font-weight: 300;
   padding: 6px 10px;
