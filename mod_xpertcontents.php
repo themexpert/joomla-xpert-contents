@@ -54,6 +54,11 @@ $primary_count = ( $primary_count > $total ) ? $total : $primary_count;
 // Based on primary column value we'll set secondary visibility
 $secondary_show = ( $primary_count < $total ) ? TRUE : FALSE;
 
+if ( $secondary_show )
+{
+	$sec_count = ( $sec_count > ($total-$primary_count) ) ? ($total - $primary_count) ? $sec_count;
+}
+
 $layout = $params->get('layout', 'default');
 
 
