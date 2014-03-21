@@ -56,7 +56,7 @@ $secondary_show = ( $primary_count < $total ) ? TRUE : FALSE;
 
 if ( $secondary_show )
 {
-	$sec_count = ( $sec_count > ($total-$primary_count) ) ? ($total - $primary_count) ? $sec_count;
+	$sec_count = ( $sec_count > ($total-$primary_count) ) ? ($total - $primary_count) : $sec_count;
 }
 
 $layout = $params->get('layout', 'default');
