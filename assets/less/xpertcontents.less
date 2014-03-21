@@ -38,6 +38,7 @@
 	.heading{ margin: 15px 0 0; line-height: 1; }
 	// Meta
 	.meta{
+		display: inline-block;
 		padding: 3px 10px 2px;
 		text-shadow: 1px 1px 1px #FFF;
 		border-radius: 2px;
@@ -94,14 +95,18 @@
 	.item a{ display: block; position: relative; }
 	.item .xco-btn{ display: inline-block; }
 	.heading{
-		margin: 0;
-		background: rgba(0, 0, 0, 0.4);
-		z-index: 99;
 		position: absolute;
 		bottom: 0;
+		margin: 0;
+		width: 100%;
+		z-index: 99;
+		padding: 6px 10px;
+		background: rgba(0, 0, 0, 0.4);		
 		color: #FFF;
 		font-weight: 300;
-		padding: 6px 10px;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
 	}
 }
 
