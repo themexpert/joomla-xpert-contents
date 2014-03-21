@@ -18,18 +18,48 @@
 .clearfix:after {
   clear: both;
 }
+.xco-wrap {
+  *zoom: 1;
+}
+.xco-wrap:before,
+.xco-wrap:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.xco-wrap:after {
+  clear: both;
+}
 .xco-wrap .item {
   padding: 10px;
+  *zoom: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.xco-wrap .item:before,
+.xco-wrap .item:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.xco-wrap .item:after {
+  clear: both;
 }
 .xco-wrap .heading {
   margin: 15px 0 0;
   line-height: 1;
 }
+.xco-wrap .meta {
+  padding: 3px 10px 2px;
+  text-shadow: 1px 1px 1px #FFF;
+  border-radius: 2px;
+  background: #EEE;
+}
 .xco-wrap .meta span + span {
   margin-left: 15px;
+  padding-left: 10px;
+  border-left: 1px solid #CCC;
 }
 .xco-wrap .meta,
 .xco-wrap .intro {
@@ -85,6 +115,9 @@
   display: block;
   position: relative;
 }
+.xco-caption .item .xco-btn {
+  display: inline-block;
+}
 .xco-caption .heading {
   margin: 0;
   background: rgba(0, 0, 0, 0.4);
@@ -102,6 +135,8 @@
 .xco-classic-row .item:nth-child(4n+3) .image,
 .xco-classic-row .item:nth-child(4n+4) .image {
   float: right;
+  margin-right: 0;
+  margin-left: 15px;
 }
 .xco-grid {
   width: 100%;

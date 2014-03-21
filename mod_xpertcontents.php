@@ -48,6 +48,9 @@ $items = $source->getItems();
 $total = count($items);
 $total = ( $count > $total ) ? $total : $count;
 
+// Check Primary count
+$primary_count = ( $primary_count > $total ) $total : $primary_count;
+
 // Based on primary column value we'll set secondary visibility
 $secondary_show = ( $primary_count < $total ) ? TRUE : FALSE;
 

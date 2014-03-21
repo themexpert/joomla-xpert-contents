@@ -25,9 +25,11 @@
 }
 
 .xco-wrap{
+	.clearfix();
 	// Item
 	.item{ 
 		padding: 10px; 
+		.clearfix();
 		-webkit-box-sizing: border-box;
 		   -moz-box-sizing: border-box;
 		        box-sizing: border-box;
@@ -36,7 +38,16 @@
 	.heading{ margin: 15px 0 0; line-height: 1; }
 	// Meta
 	.meta{
-		span+span{ margin-left: 15px; }
+		padding: 3px 10px 2px;
+		text-shadow: 1px 1px 1px #FFF;
+		border-radius: 2px;
+		background: #EEE;
+
+		span+span{ 
+			margin-left: 15px; 
+			padding-left: 10px;
+			border-left: 1px solid #CCC;
+		}
 	}
 	.meta,
 	.intro{ margin: 5px 0 0; }
@@ -81,6 +92,7 @@
 // Caption 
 .xco-caption{
 	.item a{ display: block; position: relative; }
+	.item .xco-btn{ display: inline-block; }
 	.heading{
 		margin: 0;
 		background: rgba(0, 0, 0, 0.4);
@@ -98,7 +110,7 @@
 	.item{ width: 50%; float: left; }
 	.item:nth-child(4n+3),
 	.item:nth-child(4n+4){ 
-		.image{ float: right; }
+		.image{ float: right; margin-right: 0; margin-left: 15px; }
 	}
 }
 
