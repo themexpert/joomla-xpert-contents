@@ -135,6 +135,25 @@
                 <field name="sec_intro_limit" type="text" default="30"
                        label="INTRO_TEXT_LIMIT"
                        description="INTRO_TEXT_LIMIT_DESC" />
+
+           <field name="image_settings" type="spacer" label="IMAGE_SETTINGS_LABEL" description="IMAGE_SETTINGS_DESC" />
+
+
+              <field name="image_resize" type="radio" default="0"
+                     label="IMAGE_RESIZE"
+                     description="IMAGE_RESIZE_DESC"
+                     class="btn-group" filter="integer">
+                  <option value="1">JYES</option>
+                  <option value="0">JNO</option>
+              </field>
+
+              <field name="image_width" type="text" default="400"
+                     label="IMAGE_WIDTH"
+                     description="IMAGE_WIDTH_DESC" />
+
+              <field name="image_height" type="text" default="300"
+                     label="IMAGE_HEIGHT"
+                     description="IMAGE_HEIGHT_DESC" />
             </fieldset>
 
             <fieldset name="JOOMLA">
