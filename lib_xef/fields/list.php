@@ -18,7 +18,7 @@ defined( '_JEXEC' ) or die('Restricted access');
  * @subpackage  Form
  * @since       11.1
  */
-class JFormFieldList extends JFormField
+class JFormFieldList_x extends JFormField
 {
 	/**
 	 * The form field type.

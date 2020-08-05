@@ -25,7 +25,7 @@
             <fieldset name="basic">
                 <field name="utility" type="utility" />
                 <field name="generaldoc" type="doc" message="DOC_MSG" />
-                <field name="configurator" type="configurator" label="Configuration" description="" />
+                <!-- <field name="configurator" type="configurator" label="Configuration" description="" /> -->
                 <field name="content_source" type="source" default="joomla"
 providers='joomla,k2,easyblog'
 label="CONTENT_SOURCE"
