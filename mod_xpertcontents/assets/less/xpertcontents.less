@@ -1,0 +1,134 @@
+/**
+ * @package Xpert Contents
+ * @version 2.4
+ * @author ThemeXpert http://www.themexpert.com
+ * @copyright Copyright (C) 2009 - 2011 ThemeXpert
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ *
+ */
+ // Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.xco-wrap{
+	.clearfix();
+	// Item
+	.item{ 
+		padding: 10px; 
+		.clearfix();
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+	}
+	// Heading
+	.heading{ margin: 15px 0 0; line-height: 1; }
+	// Meta
+	.meta{
+		display: inline-block;
+		padding: 3px 10px 2px;
+		text-shadow: 1px 1px 1px #FFF;
+		border-radius: 2px;
+		background: #f5f5f5;
+
+		span+span{ 
+			margin-left: 15px; 
+			padding-left: 10px;
+			border-left: 1px solid #CCC;
+		}
+	}
+	.meta,
+	.intro{ margin: 5px 0 0; }
+	
+	// Readmore button
+	.xco-btn{
+		border: 1px solid #ccc;
+		padding: 0 15px;
+		line-height: 24px;
+		display: inline-block;
+		margin-top: 10px;
+		&:hover{ background-color: #eee; }
+	}
+}
+.xco-media-left{
+	.image{ float: left; width: 40%; margin-right: 15px; }
+	.heading{ margin: 0; font-size: 15px; }
+}
+// Columns
+[class*='xco-col-'] .item{ float: left; }
+.xco-col-2{
+	.item{ width: 50%; }
+}
+.xco-col-3{
+	.item{ width: 33.334%; }
+}
+.xco-col-4{
+	.item{ width: 25%; }
+}
+
+// Sec col
+.sec-col{ .heading{ margin-top: 0; } }
+
+// Default Layout 
+.xco-default,
+.xco-list{
+	[class*='-col']{ float: left; }
+	// Layout
+	.pri-col{ width: 60%; }
+	.sec-col{ width: 40%; }
+}
+// Caption 
+.xco-caption{
+	.item a{ display: block; position: relative; }
+	.item .xco-btn{ display: inline-block; }
+	.heading{
+		position: absolute;
+		bottom: 0;
+		margin: 0;
+		width: 100%;
+		z-index: 99;
+		padding: 6px 10px;
+		background: rgba(0, 0, 0, 0.4);		
+		color: #FFF;
+		font-weight: 300;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+	}
+}
+
+//Classic row 
+.xco-classic-row{
+	.item{ width: 50%; float: left; }
+	.item:nth-child(4n+3),
+	.item:nth-child(4n+4){ 
+		.image{ float: right; margin-right: 0; margin-left: 15px; }
+	}
+}
+
+// Grid 
+.xco-grid{
+	width: 100%;
+	.item{
+		float: left;
+		width: 25%;
+		padding: 0;
+		&:nth-child(5n+1){ width: 50%; }
+	}
+	.heading,
+	.meta,
+	.intro{ display: none; }
+}

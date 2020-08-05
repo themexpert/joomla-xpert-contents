@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+	<name>Xpert Installer</name>
+	<creationDate>2012-10-30</creationDate>
+	<author>Parvez Akther</author>
+	<authorEmail>parvez@themexpert.com</authorEmail>
+	<authorUrl>http://www.themexpert.com</authorUrl>
+	<copyright>Copyright (c)2012 Parvez Akther</copyright>
+	<license>GNU/GPL v3 or later license</license>
+	<version>1.0</version>
+	<description></description>
+
+    <!-- Installation / uninstallation PHP scripts -->
+    <scriptfile>install.script.php</scriptfile>
+
+    <files>
+        <filename plugin="installer">installer.php</filename>
+    </files>
+
+    <extlist>
+
+        <ext type="library" enabled="true">
+            <folder>lib_xef</folder>
+            <name>XEF - Xpert Extension Framewrok</name>
+            <description>ThemeXpert Extension development framewrok</description>
+        </ext>
+
+        <ext type="module" client="site" enabled="true">
+            <folder>mod_xpertcontents</folder>
+            <name>xpertcontents module</name>
+        </ext>
+
+    </extlist>
+
+</extension>
